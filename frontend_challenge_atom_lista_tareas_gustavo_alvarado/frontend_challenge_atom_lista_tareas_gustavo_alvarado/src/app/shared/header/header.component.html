@@ -1,0 +1,13 @@
+<mat-toolbar class="navbar-item">
+    <span>Lista Tareas</span>
+
+    <div style="text-align: end;">
+        <li *ngIf="autenticarServ.autenticar()" >
+            <button mat-stroked-button (click)="cerrar()" class="button-item">Cerrar
+                Sesión</button>
+        </li>
+    </div>
+
+
+
+</mat-toolbar>

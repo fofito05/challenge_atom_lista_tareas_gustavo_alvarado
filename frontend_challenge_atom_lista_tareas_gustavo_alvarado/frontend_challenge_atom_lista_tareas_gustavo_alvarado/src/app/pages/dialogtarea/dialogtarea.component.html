@@ -1,0 +1,25 @@
+<div style="text-align: center;">
+    <h1>
+        Agregar Tarea
+    </h1>
+    <mat-form-field style="width: 50%;" appearance="fill">
+        <mat-label>
+            Agregar título
+        </mat-label>
+        <input matInput style="width : 200px" placeholder="Ingresa título a tarea" value="titulo_tarea"
+            [(ngModel)]="data.titulo_tarea" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 50%;" appearance="fill">
+        <mat-label>Agregar descripción </mat-label>
+        <textarea matInput style="width : 200px" placeholder="Ingresa descripción a tarea" value="descripcion_tarea"
+            [(ngModel)]="data.descripcion_tarea" required></textarea>
+    </mat-form-field>
+
+    <br>
+    <button mat-raised-button [mat-dialog-close]="data" [disabled]="!data.descripcion_tarea && !data.titulo_tarea"
+        color="primary">Aceptar</button>
+    <button mat-raised-button (click)="cancelar()" color="warn">Cancelar</button>
+</div>
+
+<!--cdkFocusInitial-->
