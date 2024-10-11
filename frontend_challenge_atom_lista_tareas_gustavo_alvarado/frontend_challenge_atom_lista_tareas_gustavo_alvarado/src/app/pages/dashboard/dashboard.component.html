@@ -1,0 +1,78 @@
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>Lista Tarea</mat-card-title>
+        <mat-card-subtitle>Listado de tareas por usuario.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field>
+            <mat-label>Filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Puedes filtrar tus tareas" #input>
+        </mat-form-field>
+        <br>
+
+        <button mat-icon-button aria-label="" class="boton" (click)="abrirDialog()">
+            <mat-icon>add_task</mat-icon>
+        </button>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="Título" class="colores">
+                <th mat-header-cell *matHeaderCellDef>
+                    Título
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.titulo_tarea}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Descripción">
+                <th mat-header-cell *matHeaderCellDef>
+                    Descripción
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.descripcion_tarea}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Fecha Creación">
+                <th mat-header-cell *matHeaderCellDef>
+                    Fecha Creación
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.fecha_creacion_tarea}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Estado Completado">
+                <th mat-header-cell *matHeaderCellDef>
+                    Estado Completado
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <p><mat-slide-toggle [checked]="element.estado_completado_tarea" 
+                            (change)="actualizarTarea(element.estado_completado_tarea, element.titulo_tarea, element.descripcion_tarea, element.id,1)"></mat-slide-toggle>
+                    </p>
+                </td>
+            </ng-container>
+
+            <!-- Actualizar Column -->
+            <ng-container matColumnDef="Actualizar">
+                <th mat-header-cell *matHeaderCellDef> Actualizar </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button color="primary"
+                        (click)="abrirActualizarDialog(element.titulo_tarea, element.descripcion_tarea,element.estado_completado_tarea, element.id)">Actualizar</button>
+
+                </td>
+            </ng-container>
+
+            <!-- Eliminar Column -->
+            <ng-container matColumnDef="Eliminar">
+                <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button style="background-color: red;" (click)="eliminarTarea(element.id)">Eliminar</button>
+
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </mat-card-content>
+</mat-card>
