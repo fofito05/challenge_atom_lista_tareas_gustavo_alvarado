@@ -126,3 +126,25 @@ https://us-central1-atom-challenge-lista-tareas.cloudfunctions.net/app/users
 }
 
 
+Para el Frontend utilice la version 16 de Angular 
+
+El portal se maneja de 2 vistas login y dashboard,
+
+Para el login si no existe el usuario (correo electronico) en la base de datos,
+se abre un dialog para la confirmación del registro, con el registro se accede al dashboard,
+de igual manera si existe el usuario accede al mismo.
+
+En el dashboard encontrará una vista con una tabla, en el cual se carga las tareas creadas por el usuario,
+con esto puede agregar tareas, eliminar tareas, actualizar título o descripción, además cambiar el estado
+a completado de la tarea, pero esto es una actualización de este campo en la base de datos.
+
+Los datos mostrados son de la base de datos, se trabajo en validar la fecha, convertirla en formato que lo 
+entendiera el usuario, esto a que en firestore maneja las fechas como Timestamp, esto igual para el registro
+de tareas, en el backend se convierte la fecha en Timestamp.
+
+Agregué en el dashboard un filtro para obtener las tareas de manera rápida, de igual manera con un botónd e cerrar sesión,
+este cierra la sesión y enruta a la vista del login, funciona igual con actualizar el portal, esto para un manejo de seguridad.
+
+
+
+
